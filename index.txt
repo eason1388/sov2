@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隨緣堂 — 道家玄學・修行・濟世</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+:root{
+  --k0:#010000;--k1:#040200;--k2:#080500;--k3:#0e0900;--k4:#160d02;--k5:#1e1204;
+  --r1:#8c1a04;--r2:#b82208;--r3:#d93010;--r4:#f04820;
+  --g1:#7a5002;--g2:#a86c04;--g3:#d49008;--g4:#f0b010;--g5:#ffd030;
+  --j1:#0e3e1e;--j2:#186030;--j3:#228048;
+  --t0:#f0e4cc;--t1:#d4c4a0;--t2:#a8906c;--t3:#6a5038;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:21px;}
+body{background:var(--k1);color:var(--t1);font-family:'Noto Serif TC',serif;font-weight:400;line-height:2.0;overflow-x:hidden;cursor:none;}
+body::before{content:'';position:fixed;inset:0;z-index:9500;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,180,60,.008) 2px,rgba(255,180,60,.008) 3px);}
+#CUR{width:16px;height:16px;border:1.5px solid var(--g4);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s;mix-blend-mode:screen;}
+#CDOT{width:4px;height:4px;background:var(--g5);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+
+/* NAV */
+#NAV{position:fixed;top:0;left:0;right:0;z-index:800;height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(1,0,0,.98);border-bottom:1px solid rgba(210,144,8,.55);}
+#NAV::after{content:'';position:absolute;bottom:0;left:4%;right:4%;height:1px;background:linear-gradient(to right,transparent,rgba(255,208,48,.75),transparent);}
+.nlogo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nwm{font-family:'Ma Shan Zheng',cursive;font-size:2.6rem;color:var(--g5);letter-spacing:.06em;text-shadow:0 0 28px rgba(255,208,48,.7),0 0 80px rgba(255,208,48,.25);}
+.nlinks{display:flex;gap:44px;list-style:none;}
+.nlinks a{font-family:'Noto Sans TC',sans-serif;font-size:1rem;letter-spacing:.22em;color:var(--t3);text-decoration:none;transition:color .3s;position:relative;}
+.nlinks a::after{content:'';position:absolute;left:0;bottom:-5px;right:0;height:1px;background:var(--g4);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.nlinks a:hover{color:var(--g5);}
+.nlinks a:hover::after{transform:scaleX(1);}
+.ncta{background:var(--r2)!important;color:var(--t0)!important;padding:10px 28px;letter-spacing:.28em!important;}
+.ncta::after{display:none!important;}
+.ncta:hover{background:var(--r3)!important;}
+
+/* HERO */
+#HERO{min-height:100vh;display:grid;grid-template-columns:54% 46%;padding-top:88px;position:relative;overflow:hidden;}
+.hgrid{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.hgrid::before{content:'';position:absolute;inset:-60%;background:linear-gradient(rgba(210,144,8,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(210,144,8,.065) 1px,transparent 1px);background-size:88px 88px;animation:gp 50s linear infinite;}
+.hgrid::after{content:'';position:absolute;inset:-60%;background:linear-gradient(rgba(185,34,8,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(185,34,8,.04) 1px,transparent 1px);background-size:264px 264px;animation:gp 50s linear infinite reverse;}
+@keyframes gp{from{transform:translate(0,0) rotate(7deg);}to{transform:translate(88px,88px) rotate(7deg);}}
+.hleft{display:flex;flex-direction:column;justify-content:center;padding:80px 5% 240px 5.5%;position:relative;z-index:10;background:linear-gradient(to right,rgba(1,0,0,.99) 52%,transparent);}
+.hrune{position:absolute;font-family:'Ma Shan Zheng',cursive;font-size:.84rem;letter-spacing:.45em;color:rgba(210,144,8,.38);}
+.hrune-tl{top:24px;left:24px;}
+.hbadge{display:inline-flex;align-items:center;gap:14px;font-family:'Noto Sans TC',sans-serif;font-size:.88rem;letter-spacing:.55em;color:var(--g3);border:1px solid rgba(210,144,8,.5);padding:10px 26px;margin-bottom:46px;width:fit-content;position:relative;}
+.hbadge::before,.hbadge::after{content:'';position:absolute;width:9px;height:9px;border:1px solid var(--g2);}
+.hbadge::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.hbadge::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+.htitle{font-family:'Ma Shan Zheng',cursive;font-size:clamp(6.5rem,12vw,11.5rem);line-height:.92;letter-spacing:.06em;color:var(--t0);margin-bottom:16px;text-shadow:0 0 140px rgba(210,144,8,.55),0 10px 60px rgba(0,0,0,1),6px 6px 0 rgba(185,34,8,.1);}
+.hsub{font-family:'Noto Sans TC',sans-serif;font-size:1.22rem;letter-spacing:.72em;color:var(--g2);margin-bottom:52px;}
+.hdiv{display:flex;align-items:center;gap:22px;margin-bottom:52px;}
+.hdl{height:1px;flex:1;background:linear-gradient(to right,var(--g2),transparent);}
+.hds{color:var(--g2);font-size:1.2rem;letter-spacing:.1em;}
+.hbody{font-size:1.25rem;line-height:2.5;color:var(--t1);margin-bottom:64px;max-width:540px;font-weight:300;}
+.hbody em{color:var(--g5);font-style:normal;font-weight:500;}
+.hbtns{display:flex;gap:20px;flex-wrap:wrap;}
+.btnfire{background:linear-gradient(135deg,var(--r2),#6e1000);color:var(--t0);padding:22px 58px;font-family:'Noto Sans TC',sans-serif;font-size:1.18rem;letter-spacing:.32em;text-decoration:none;display:inline-block;position:relative;overflow:hidden;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);box-shadow:0 8px 48px rgba(185,34,8,.45);transition:all .3s;}
+.btnfire::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:left .55s;}
+.btnfire:hover::before{left:100%;}
+.btnfire:hover{box-shadow:0 14px 70px rgba(185,34,8,.7);}
+.btngold{color:var(--g4);padding:22px 58px;font-family:'Noto Sans TC',sans-serif;font-size:1.18rem;letter-spacing:.32em;text-decoration:none;display:inline-block;border:1px solid rgba(210,144,8,.65);transition:all .3s;position:relative;}
+.btngold::before,.btngold::after{content:'';position:absolute;width:14px;height:14px;}
+.btngold::before{top:-1px;left:-1px;border-top:2px solid var(--g4);border-left:2px solid var(--g4);}
+.btngold::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--g4);border-right:2px solid var(--g4);}
+.btngold:hover{background:rgba(210,144,8,.12);border-color:var(--g5);color:var(--g5);}
+.hright{position:relative;overflow:hidden;background:radial-gradient(ellipse 88% 80% at 62% 48%,rgba(168,108,4,.16) 0%,rgba(120,26,4,.1) 42%,transparent 72%),var(--k2);}
+.hcos{width:100%;height:100%;position:absolute;inset:0;}
+.sbar{position:absolute;bottom:0;left:0;right:0;z-index:20;background:rgba(1,0,0,.99);border-top:1px solid rgba(210,144,8,.48);display:grid;grid-template-columns:repeat(4,1fr);}
+.st{padding:34px 0;text-align:center;border-right:1px solid rgba(210,144,8,.1);position:relative;}
+.st:last-child{border-right:none;}
+.st::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:38px;height:3px;background:var(--r2);}
+.stn{font-family:'Ma Shan Zheng',cursive;font-size:3.8rem;color:var(--g5);display:block;line-height:1;margin-bottom:8px;text-shadow:0 0 50px rgba(255,208,48,.55);}
+.stl{font-family:'Noto Sans TC',sans-serif;font-size:.92rem;letter-spacing:.3em;color:var(--t3);}
+
+/* SHARED */
+.eyebrow{font-family:'Noto Sans TC',sans-serif;font-size:.9rem;letter-spacing:.62em;color:var(--g2);display:block;margin-bottom:20px;}
+.h2{font-family:'Ma Shan Zheng',cursive;font-size:clamp(3.4rem,5.8vw,5.4rem);color:var(--t0);line-height:1.15;text-shadow:0 2px 32px rgba(0,0,0,.9);}
+.sbody{font-size:1.22rem;line-height:2.45;color:var(--t1);}
+.sbody em{color:var(--g5);font-style:normal;font-weight:500;}
+.divdr{display:flex;align-items:center;gap:20px;margin:24px 0 52px;}
+.dl{flex:1;height:1px;background:linear-gradient(to right,rgba(210,144,8,.95),transparent);}
+.dr{flex:1;height:1px;background:linear-gradient(to left,rgba(210,144,8,.95),transparent);}
+.ds{color:var(--g2);font-size:.88rem;letter-spacing:.3em;white-space:nowrap;}
+
+/* MARQUEE */
+#WIS{overflow:hidden;background:var(--k0);border-top:1px solid rgba(210,144,8,.3);border-bottom:1px solid rgba(210,144,8,.3);}
+.wt{display:flex;white-space:nowrap;animation:mq 24s linear infinite;}
+.wt span{padding:28px 68px;font-family:'Ma Shan Zheng',cursive;font-size:1.5rem;color:var(--g2);border-right:1px solid rgba(210,144,8,.22);flex-shrink:0;}
+.wt span b{color:var(--r3);font-weight:400;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* CHANNELS */
+#CH{padding:160px 5%;background:var(--k2);position:relative;overflow:hidden;}
+.chwm{position:absolute;right:-1%;top:50%;transform:translateY(-50%);font-family:'Ma Shan Zheng',cursive;font-size:28vw;color:rgba(210,144,8,.024);pointer-events:none;writing-mode:vertical-rl;line-height:1;}
+.chintro{display:grid;grid-template-columns:1fr 1fr;gap:84px;align-items:end;margin-bottom:84px;}
+.chgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.chcard{background:var(--k4);padding:72px 54px;position:relative;overflow:hidden;border-top:5px solid var(--k5);text-decoration:none;color:inherit;display:block;transition:all .45s;}
+.chcard::before{content:'';position:absolute;inset:0;background:linear-gradient(155deg,rgba(210,144,8,.11) 0%,transparent 55%);opacity:0;transition:opacity .45s;}
+.chcard:hover{transform:translateY(-16px);}
+.chcard:hover::before{opacity:1;}
+.chcard[data-c="g"]{border-top-color:var(--g2);}
+.chcard[data-c="g"]:hover{border-top-color:var(--g5);}
+.chcard[data-c="j"]{border-top-color:var(--j2);}
+.chcard[data-c="j"]:hover{border-top-color:var(--j3);}
+.chcard[data-c="r"]{border-top-color:var(--r2);}
+.chcard[data-c="r"]:hover{border-top-color:var(--r3);}
+.chvis{width:100%;height:180px;margin-bottom:38px;display:flex;align-items:center;justify-content:center;}
+.chnum{font-family:'Noto Sans TC',sans-serif;font-size:.76rem;letter-spacing:.56em;color:rgba(210,144,8,.4);display:block;margin-bottom:18px;}
+.chtitle{font-family:'Ma Shan Zheng',cursive;font-size:2.7rem;color:var(--t0);margin-bottom:10px;line-height:1.2;}
+.chen{font-family:'Noto Sans TC',sans-serif;font-size:.82rem;letter-spacing:.4em;color:var(--t3);margin-bottom:32px;}
+.chdesc{font-size:1.12rem;line-height:2.2;color:var(--t1);margin-bottom:40px;}
+.charrow{font-family:'Noto Sans TC',sans-serif;font-size:.92rem;letter-spacing:.34em;color:var(--g2);display:inline-flex;align-items:center;gap:10px;transition:gap .3s,color .3s;}
+.chcard:hover .charrow{gap:20px;color:var(--g5);}
+
+/* ICONS */
+#ICONS{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.ip{position:relative;overflow:hidden;height:440px;display:flex;align-items:flex-end;}
+.ip svg{position:absolute;inset:0;width:100%;height:100%;}
+.iplbl{position:relative;z-index:2;padding:36px 40px;background:linear-gradient(to top,rgba(1,0,0,.97) 0%,rgba(1,0,0,.55) 65%,transparent 100%);width:100%;}
+.ipch{font-family:'Ma Shan Zheng',cursive;font-size:3rem;color:var(--t0);display:block;margin-bottom:4px;}
+.ipen{font-family:'Noto Sans TC',sans-serif;font-size:.8rem;letter-spacing:.44em;color:var(--g2);}
+
+/* TOTEM */
+#TOTEM{background:var(--k3);position:relative;overflow:hidden;}
+#TOTEM::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--g2),transparent);}
+#TOTEM::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--g2),transparent);}
+.totemwrap{display:grid;grid-template-columns:1fr 1fr;min-height:720px;}
+.totemleft{display:flex;align-items:center;justify-content:center;padding:88px;background:var(--k2);border-right:1px solid rgba(210,144,8,.14);}
+.totemright{padding:96px 7%;display:flex;flex-direction:column;justify-content:center;}
+.totemh{font-family:'Ma Shan Zheng',cursive;font-size:clamp(3.2rem,5.2vw,4.8rem);color:var(--t0);line-height:1.3;margin-bottom:38px;}
+.totemh span{color:var(--g5);}
+.totembody{font-size:1.22rem;line-height:2.55;color:var(--t1);margin-bottom:56px;}
+.pills{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.pill{padding:36px 32px;background:rgba(1,0,0,.55);border:1px solid rgba(210,144,8,.15);}
+.pilli{font-size:2.4rem;margin-bottom:16px;display:block;}
+.pillt{font-family:'Ma Shan Zheng',cursive;font-size:1.85rem;color:var(--g3);display:block;margin-bottom:12px;}
+.pilld{font-size:1.02rem;line-height:2.05;color:var(--t3);}
+.pillb{background:rgba(14,9,0,.7);}
+
+/* DAILY */
+#DAILY{padding:160px 5%;background:var(--k1);text-align:center;position:relative;overflow:hidden;}
+.dglow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:65vw;height:65vh;pointer-events:none;background:radial-gradient(ellipse,rgba(210,144,8,.065) 0%,transparent 70%);}
+.dframe{max-width:1000px;margin:0 auto;padding:96px;border:1px solid rgba(210,144,8,.35);position:relative;}
+.dframe::before,.dframe::after{content:'';position:absolute;width:52px;height:52px;}
+.dframe::before{top:-2px;left:-2px;border-top:3px solid var(--g3);border-left:3px solid var(--g3);}
+.dframe::after{bottom:-2px;right:-2px;border-bottom:3px solid var(--g3);border-right:3px solid var(--g3);}
+.dtr{position:absolute;top:-2px;right:-2px;width:52px;height:52px;border-top:3px solid var(--g3);border-right:3px solid var(--g3);}
+.dbl{position:absolute;bottom:-2px;left:-2px;width:52px;height:52px;border-bottom:3px solid var(--g3);border-left:3px solid var(--g3);}
+.dq{font-family:'Ma Shan Zheng',cursive;font-size:clamp(2.4rem,5vw,4.4rem);color:var(--t0);line-height:1.8;text-shadow:0 0 80px rgba(210,144,8,.3);margin-bottom:20px;}
+.dgem{width:30px;height:4px;background:var(--r2);margin:36px auto;}
+.dsrc{font-family:'Noto Sans TC',sans-serif;font-size:.94rem;letter-spacing:.46em;color:var(--t3);}
+
+/* ARTICLES */
+#ART{padding:160px 5%;background:var(--k2);}
+.arthdr{display:grid;grid-template-columns:1fr auto;align-items:end;margin-bottom:84px;gap:40px;}
+.artgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:3px;}
+.afeat{grid-column:1/3;display:grid;grid-template-columns:1fr 1fr;background:var(--k4);border-top:5px solid var(--r2);overflow:hidden;text-decoration:none;color:inherit;transition:all .4s;}
+.afeat:hover{border-top-color:var(--r3);}
+.athumb{overflow:hidden;position:relative;}
+.athumb svg{width:100%;height:100%;display:block;}
+.acnt{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;}
+.acat{font-family:'Noto Sans TC',sans-serif;font-size:.8rem;letter-spacing:.5em;color:var(--r3);margin-bottom:14px;}
+.attl{font-family:'Ma Shan Zheng',cursive;font-size:2.3rem;color:var(--t0);line-height:1.4;margin-bottom:20px;}
+.aex{font-size:1.12rem;line-height:2.2;color:var(--t1);margin-bottom:28px;}
+.ameta{font-family:'Noto Sans TC',sans-serif;font-size:.86rem;letter-spacing:.22em;color:var(--t3);}
+.acard{background:var(--k4);text-decoration:none;color:inherit;transition:all .4s;overflow:hidden;display:flex;flex-direction:column;border-top:5px solid var(--k5);}
+.acard:hover{border-top-color:var(--g2);transform:translateY(-12px);}
+.aath{overflow:hidden;}
+.aath svg{width:100%;height:100%;display:block;}
+.abody{padding:40px 36px;flex:1;}
+
+/* SYMBOLS */
+#SYM{padding:160px 5%;background:var(--k3);position:relative;overflow:hidden;}
+.symwm{position:absolute;right:-3%;bottom:-6%;font-family:'Ma Shan Zheng',cursive;font-size:60vw;color:rgba(210,144,8,.025);pointer-events:none;line-height:1;}
+.symcats{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:84px;}
+.scat{background:var(--k4);padding:56px 40px;position:relative;overflow:hidden;border-bottom:5px solid transparent;transition:all .4s;cursor:pointer;}
+.scat:hover{border-bottom-color:var(--g2);transform:translateY(-8px);}
+.scatico{margin-bottom:30px;display:flex;align-items:center;justify-content:center;}
+.scatname{font-family:'Ma Shan Zheng',cursive;font-size:2.1rem;color:var(--t0);margin-bottom:10px;}
+.scaten{font-family:'Noto Sans TC',sans-serif;font-size:.8rem;letter-spacing:.42em;color:var(--t3);margin-bottom:22px;}
+.scatdesc{font-size:1.08rem;line-height:2.15;color:var(--t1);}
+
+/* TENETS */
+#TENETS{padding:160px 5%;background:var(--k1);position:relative;overflow:hidden;text-align:center;}
+.tnwm{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Ma Shan Zheng',cursive;font-size:82vw;color:rgba(210,144,8,.018);pointer-events:none;line-height:1;}
+.tngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:84px;}
+.tenet{background:var(--k4);padding:76px 56px;position:relative;overflow:hidden;text-align:center;}
+.tenet::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(to right,var(--r2),var(--g2));}
+.tnn{font-family:'Ma Shan Zheng',cursive;font-size:7rem;color:rgba(210,144,8,.07);position:absolute;top:14px;right:20px;line-height:1;}
+.tnico{margin-bottom:36px;}
+.tntitle{font-family:'Ma Shan Zheng',cursive;font-size:2.7rem;color:var(--g5);margin-bottom:24px;}
+.tnbody{font-size:1.18rem;line-height:2.35;color:var(--t1);}
+
+/* CONSULT */
+#CON{padding:160px 5%;background:var(--k2);}
+.conwrap{display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start;}
+.conbody{font-size:1.22rem;line-height:2.45;color:var(--t1);margin-bottom:56px;}
+.conlist{list-style:none;}
+.conlist li{display:flex;align-items:flex-start;gap:20px;font-size:1.14rem;line-height:2.1;color:var(--t1);padding:18px 0;border-bottom:1px solid rgba(210,144,8,.1);}
+.conlist li span{color:var(--g3);font-size:1.35rem;flex-shrink:0;margin-top:5px;}
+.fg{margin-bottom:30px;}
+.flbl{font-family:'Noto Sans TC',sans-serif;font-size:.9rem;letter-spacing:.34em;color:var(--t3);display:block;margin-bottom:12px;}
+.fin,.fsel,.ftxt{width:100%;background:rgba(1,0,0,.65);border:1px solid rgba(210,144,8,.3);color:var(--t1);padding:18px 24px;font-family:'Noto Serif TC',serif;font-size:1.1rem;transition:border-color .3s;outline:none;}
+.fin:focus,.fsel:focus,.ftxt:focus{border-color:rgba(210,144,8,.7);background:rgba(8,4,0,.9);}
+.ftxt{min-height:155px;resize:vertical;}
+.fsel option{background:var(--k3);}
+.fsub{width:100%;background:linear-gradient(135deg,var(--r2),#6a1000);color:var(--t0);border:none;padding:25px;font-family:'Noto Sans TC',sans-serif;font-size:1.2rem;letter-spacing:.44em;cursor:pointer;transition:all .3s;box-shadow:0 8px 40px rgba(185,34,8,.42);}
+.fsub:hover{box-shadow:0 16px 70px rgba(185,34,8,.68);}
+#FOK{display:none;text-align:center;padding:60px;color:var(--g3);font-family:'Ma Shan Zheng',cursive;font-size:2.4rem;line-height:1.8;}
+
+/* FOOTER */
+#FT{background:var(--k0);border-top:1px solid rgba(210,144,8,.38);padding:96px 5% 56px;}
+.ftinner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:66px;margin-bottom:66px;}
+.ftbrand{font-family:'Ma Shan Zheng',cursive;font-size:3.4rem;color:var(--g5);text-shadow:0 0 36px rgba(255,208,48,.38);margin-bottom:20px;}
+.fttag{font-size:1.06rem;line-height:2.1;color:var(--t3);}
+.ftct{font-family:'Noto Sans TC',sans-serif;font-size:.84rem;letter-spacing:.44em;color:var(--g2);margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid rgba(210,144,8,.22);}
+.ftul{list-style:none;}
+.ftul li{margin-bottom:14px;}
+.ftul a{font-size:1.06rem;color:var(--t3);text-decoration:none;transition:color .3s;}
+.ftul a:hover{color:var(--g3);}
+.ftbtm{display:flex;justify-content:space-between;align-items:center;padding-top:38px;border-top:1px solid rgba(210,144,8,.12);font-family:'Noto Sans TC',sans-serif;font-size:.88rem;color:rgba(106,80,56,.5);}
+
+.fi{opacity:0;transform:translateY(44px);transition:opacity .9s cubic-bezier(.25,.8,.25,1),transform .9s cubic-bezier(.25,.8,.25,1);}
+.fi.on{opacity:1;transform:none;}
+
+@media(max-width:1100px){
+  #HERO{grid-template-columns:1fr;}.hright{display:none;}.hleft{padding:80px 5% 240px;}
+  .chgrid,.tngrid{grid-template-columns:1fr;}
+  .artgrid{grid-template-columns:1fr;}.afeat{grid-column:1;flex-direction:column;}
+  .symcats{grid-template-columns:1fr 1fr;}
+  .totemwrap{grid-template-columns:1fr;}.totemleft{border-right:none;border-bottom:1px solid rgba(210,144,8,.14);}
+  .conwrap{grid-template-columns:1fr;}.chintro{grid-template-columns:1fr;}
+  .ftinner{grid-template-columns:1fr 1fr;}.sbar{grid-template-columns:repeat(2,1fr);}
+  #ICONS{grid-template-columns:1fr;}.ip{height:340px;}
+}
+@media(max-width:768px){
+  html{font-size:18px;}.nlinks{display:none;}
+  .symcats{grid-template-columns:1fr;}.pills{grid-template-columns:1fr;}
+  .ftinner{grid-template-columns:1fr;}.dframe{padding:56px 28px;}
+  .arthdr{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="CUR"></div><div id="CDOT"></div>
+
+<nav id="NAV">
+  <a class="nlogo" href="#">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="28" cy="28" r="26" stroke="#a86c04" stroke-width="1.5"/>
+      <circle cx="28" cy="28" r="19" stroke="#a86c04" stroke-width=".6" stroke-dasharray="3 2" opacity=".7"/>
+      <g stroke="#d49008" stroke-width="1.2" stroke-linecap="round">
+        <line x1="22" y1="8" x2="26" y2="8"/><line x1="28" y1="8" x2="34" y2="8"/>
+        <line x1="22" y1="11" x2="34" y2="11"/><line x1="22" y1="14" x2="34" y2="14"/>
+        <line x1="22" y1="42" x2="26" y2="42"/><line x1="28" y1="42" x2="34" y2="42"/>
+        <line x1="22" y1="45" x2="26" y2="45"/><line x1="28" y1="45" x2="34" y2="45"/>
+        <line x1="22" y1="48" x2="26" y2="48"/><line x1="28" y1="48" x2="34" y2="48"/>
+        <line x1="8" y1="22" x2="12" y2="22"/><line x1="14" y1="22" x2="18" y2="22"/>
+        <line x1="8" y1="25" x2="18" y2="25"/><line x1="8" y1="28" x2="18" y2="28"/>
+        <line x1="38" y1="22" x2="48" y2="22"/>
+        <line x1="38" y1="25" x2="48" y2="25"/>
+        <line x1="38" y1="28" x2="42" y2="28"/><line x1="44" y1="28" x2="48" y2="28"/>
+      </g>
+      <path d="M28,15 A13,13 0 0,1 28,41 A6.5,6.5 0 0,1 28,28 A6.5,6.5 0 0,0 28,15Z" fill="#a86c04" opacity=".78"/>
+      <path d="M28,15 A13,13 0 0,0 28,41 A6.5,6.5 0 0,0 28,28 A6.5,6.5 0 0,1 28,15Z" fill="#010000" opacity=".92"/>
+      <circle cx="28" cy="21.5" r="3.5" fill="#d49008"/>
+      <circle cx="28" cy="34.5" r="3.5" fill="#010000" stroke="#a86c04" stroke-width=".8"/>
+    </svg>
+    <span class="nwm">隨緣堂</span>
+  </a>
+  <ul class="nlinks">
+    <li><a href="#CH">三大頻道</a></li>
+    <li><a href="articles.html">修行文苑</a></li>
+    <li><a href="symbols.html">符咒百科</a></li>
+    <li><a href="#CON" class="ncta">預約諮詢</a></li>
+  </ul>
+</nav>
+
+<section id="HERO">
+  <div class="hgrid"></div>
+  <div class="hleft">
+    <span class="hrune hrune-tl">☰乾 ☷坤 ☵坎 ☲離</span>
+    <div class="hbadge"><span>☯</span>道家玄學正統道場<span>☯</span></div>
+    <h1 class="htitle">隨<br>緣<br>堂</h1>
+    <p class="hsub">順應天道・隨緣濟世</p>
+    <div class="hdiv"><span class="hdl"></span><span class="hds">☰☱☲☳☴☵☶☷</span><span class="hdl"></span></div>
+    <p class="hbody">道生一，一生二，二生三，三生萬物。<br>隨緣堂承先天正統，以<em>易理玄學</em>為綱，<br><em>法術符咒</em>為用，引信眾參悟天道，<br>調和陰陽，開化人生迷途。</p>
+    <div class="hbtns">
+      <a class="btnfire" href="#CON">預約靈性諮詢</a>
+      <a class="btngold" href="#CH">探索三大頻道</a>
+    </div>
+  </div>
+  <div class="hright">
+    <svg class="hcos" viewBox="0 0 700 940" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hbg" cx="50%" cy="48%">
+          <stop offset="0%" stop-color="#a86c04" stop-opacity=".22"/>
+          <stop offset="38%" stop-color="#8c1a04" stop-opacity=".12"/>
+          <stop offset="100%" stop-color="#010000" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="glo"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glo2"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <ellipse cx="350" cy="452" rx="318" ry="395" fill="url(#hbg)"/>
+      <g transform="translate(350,440)" opacity=".2">
+        <circle r="308" fill="none" stroke="#a86c04" stroke-width="1.2" stroke-dasharray="14 7"/>
+        <circle r="290" fill="none" stroke="#d49008" stroke-width=".4" stroke-dasharray="2 10"/>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 0 0" to="-360 0 0" dur="220s" repeatCount="indefinite" additive="sum"/>
+      </g>
+      <g transform="translate(350,440)" opacity=".42">
+        <g font-family="serif" font-size="26" fill="#a86c04" text-anchor="middle" dominant-baseline="central">
+          <text x="0" y="-268">☰</text><text x="190" y="-190">☱</text>
+          <text x="268" y="0">☲</text><text x="190" y="190">☳</text>
+          <text x="0" y="268">☴</text><text x="-190" y="190">☵</text>
+          <text x="-268" y="0">☶</text><text x="-190" y="-190">☷</text>
+        </g>
+        <g stroke="#a86c04" stroke-width=".6" opacity=".32">
+          <line x1="0" y1="-268" x2="0" y2="268"/>
+          <line x1="-268" y1="0" x2="268" y2="0"/>
+          <line x1="-190" y1="-190" x2="190" y2="190"/>
+          <line x1="190" y1="-190" x2="-190" y2="190"/>
+        </g>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 0 0" to="360 0 0" dur="150s" repeatCount="indefinite" additive="sum"/>
+      </g>
+      <g transform="translate(350,440)" opacity=".28">
+        <circle r="200" fill="none" stroke="#d49008" stroke-width=".5" stroke-dasharray="3 6"/>
+        <g font-family="Ma Shan Zheng,serif" font-size="16" fill="#d49008" text-anchor="middle">
+          <text transform="rotate(-90)translate(0,-200)">甲</text>
+          <text transform="rotate(-60)translate(0,-200)">乙</text>
+          <text transform="rotate(-30)translate(0,-200)">丙</text>
+          <text transform="rotate(0)translate(0,-200)">丁</text>
+          <text transform="rotate(30)translate(0,-200)">戊</text>
+          <text transform="rotate(60)translate(0,-200)">己</text>
+          <text transform="rotate(90)translate(0,-200)">庚</text>
+          <text transform="rotate(120)translate(0,-200)">辛</text>
+          <text transform="rotate(150)translate(0,-200)">壬</text>
+          <text transform="rotate(180)translate(0,-200)">癸</text>
+          <text transform="rotate(210)translate(0,-200)">子</text>
+          <text transform="rotate(240)translate(0,-200)">丑</text>
+        </g>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="360 0 0" to="0 0 0" dur="95s" repeatCount="indefinite" additive="sum"/>
+      </g>
+      <g transform="translate(350,440)" opacity=".48">
+        <circle r="152" fill="none" stroke="#d49008" stroke-width="1.2" stroke-dasharray="20 7"/>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="360 0 0" to="0 0 0" dur="52s" repeatCount="indefinite" additive="sum"/>
+      </g>
+      <g transform="translate(350,440)" filter="url(#glo)">
+        <path d="M0,-120 A120,120 0 0,1 0,120 A60,60 0 0,1 0,0 A60,60 0 0,0 0,-120Z" fill="#a86c04" opacity=".88"/>
+        <path d="M0,-120 A120,120 0 0,0 0,120 A60,60 0 0,0 0,0 A60,60 0 0,1 0,-120Z" fill="#040200" opacity=".97"/>
+        <circle cx="0" cy="-60" r="24" fill="#040200"/>
+        <circle cx="0" cy="-60" r="10" fill="#d49008"/>
+        <circle cx="0" cy="60" r="24" fill="#a86c04" opacity=".88"/>
+        <circle cx="0" cy="60" r="10" fill="#040200"/>
+        <circle r="120" fill="none" stroke="#ffd030" stroke-width="2" opacity=".72"/>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 0 0" to="360 0 0" dur="30s" repeatCount="indefinite" additive="sum"/>
+      </g>
+      <g transform="translate(350,440)" filter="url(#glo2)">
+        <circle r="68" fill="none" stroke="#ffd030" stroke-width=".9" opacity=".28">
+          <animate attributeName="r" values="64;76;64" dur="4.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".28;.5;.28" dur="4.5s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+      <g fill="#a86c04" opacity=".48">
+        <circle cx="104" cy="136" r="2.8"/><circle cx="602" cy="178" r="2"/>
+        <circle cx="84" cy="654" r="2.5"/><circle cx="622" cy="692" r="1.5"/>
+        <circle cx="188" cy="832" r="3"/><circle cx="522" cy="778" r="2"/>
+        <circle cx="350" cy="72" r="2.5"/><circle cx="155" cy="368" r="1.5"/>
+      </g>
+      <g fill="#b82208" opacity=".38">
+        <circle cx="450" cy="128" r="2"/><circle cx="228" cy="760" r="2"/>
+        <circle cx="598" cy="460" r="2"/><circle cx="102" cy="448" r="2"/>
+      </g>
+    </svg>
+    <div class="sbar">
+      <div class="st"><span class="stn">廿年</span><span class="stl">傳承資歷</span></div>
+      <div class="st"><span class="stn">萬名</span><span class="stl">信眾護持</span></div>
+      <div class="st"><span class="stn">千符</span><span class="stl">法術文獻</span></div>
+      <div class="st"><span class="stn">四海</span><span class="stl">遠程服務</span></div>
+    </div>
+  </div>
+</section>
+
+<div id="WIS">
+  <div class="wt">
+    <span>道可道，非常道</span><span>無為而無不為</span><span>知常容，容乃公</span>
+    <span>上善若水，水善利萬物</span><span><b>☯</b>天之道，損有餘而補不足</span>
+    <span>致虛極，守靜篤</span><span>為學日益，為道日損</span>
+    <span><b>☯</b>知人者智，自知者明</span><span>道生一，一生二，二生三，三生萬物</span>
+    <span>柔弱者生之徒，堅強者死之徒</span>
+    <span>道可道，非常道</span><span>無為而無不為</span><span>知常容，容乃公</span>
+    <span>上善若水，水善利萬物</span><span><b>☯</b>天之道，損有餘而補不足</span>
+    <span>致虛極，守靜篤</span><span>為學日益，為道日損</span>
+    <span><b>☯</b>知人者智，自知者明</span><span>道生一，一生二，二生三，三生萬物</span>
+    <span>柔弱者生之徒，堅強者死之徒</span>
+  </div>
+</div>
+
+<section id="CH">
+  <div class="chwm">道</div>
+  <div class="chintro">
+    <div>
+      <span class="eyebrow">THREE CHANNELS · 三大頻道</span>
+      <h2 class="h2">法脈三途<br>引領修行</h2>
+      <div class="divdr"><span class="dl"></span><span class="ds">☰乾坤有序・萬法歸宗</span><span class="dr"></span></div>
+    </div>
+    <p class="sbody fi">隨緣堂三大頻道，各主一域。<em>清靜經緯</em>傳習道家哲理；<em>法露恩光</em>展示儀法助緣；<em>幽冥通牒</em>探究生死奧義。三途並行，殊途同歸，皆指向天人合一之大道。</p>
+  </div>
+  <div class="chgrid">
+    <a class="chcard fi" href="articles.html" data-c="g">
+      <div class="chvis">
+        <svg viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="cg1" cx="50%" cy="50%"><stop offset="0%" stop-color="#a86c04" stop-opacity=".38"/><stop offset="100%" stop-color="#a86c04" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="90" cy="90" r="82" fill="url(#cg1)" stroke="#a86c04" stroke-width="1.3" stroke-dasharray="7 4"/>
+          <circle cx="90" cy="90" r="58" fill="none" stroke="#d49008" stroke-width=".8" opacity=".55"/>
+          <rect x="46" y="56" width="88" height="68" rx="3" fill="none" stroke="#d49008" stroke-width="2" opacity=".9"/>
+          <rect x="38" y="52" width="12" height="76" rx="6" fill="#a86c04" opacity=".78"/>
+          <rect x="130" y="52" width="12" height="76" rx="6" fill="#a86c04" opacity=".78"/>
+          <line x1="62" y1="77" x2="118" y2="77" stroke="#d49008" stroke-width="1.4" opacity=".82"/>
+          <line x1="62" y1="90" x2="118" y2="90" stroke="#d49008" stroke-width="1.4" opacity=".82"/>
+          <line x1="62" y1="103" x2="96" y2="103" stroke="#d49008" stroke-width="1.4" opacity=".62"/>
+          <line x1="124" y1="62" x2="146" y2="40" stroke="#ffd030" stroke-width="2.5"/>
+          <polygon points="124,62 118,74 130,68" fill="#ffd030" opacity=".88"/>
+          <rect x="110" y="108" width="22" height="22" rx="2" fill="#b82208" opacity=".9"/>
+          <text x="121" y="124" font-size="12" fill="#ffd030" text-anchor="middle" font-family="serif">令</text>
+        </svg>
+      </div>
+      <span class="chnum">01 · CHANNEL</span>
+      <h3 class="chtitle">清靜經緯</h3>
+      <p class="chen">CLASSICAL TAOISM · MEDITATION</p>
+      <p class="chdesc">以《道德經》《清靜經》為本，系統講解道家養生、氣功吐納、打坐冥想、五行易理等修行法門，引信眾回歸天然清靜之本性。</p>
+      <span class="charrow">深入探索 →</span>
+    </a>
+    <a class="chcard fi" href="symbols.html" data-c="j" style="transition-delay:.14s">
+      <div class="chvis">
+        <svg viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="cg2" cx="50%" cy="50%"><stop offset="0%" stop-color="#186030" stop-opacity=".38"/><stop offset="100%" stop-color="#186030" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="90" cy="90" r="82" fill="url(#cg2)" stroke="#228048" stroke-width="1.3" stroke-dasharray="7 4"/>
+          <rect x="52" y="38" width="76" height="104" rx="3" fill="rgba(24,96,48,.18)" stroke="#228048" stroke-width="2" opacity=".88"/>
+          <path d="M68,58 Q90,44 112,58" fill="none" stroke="#ffd030" stroke-width="3" opacity=".95"/>
+          <circle cx="90" cy="50" r="7" fill="none" stroke="#ffd030" stroke-width="1.8" opacity=".75"/>
+          <line x1="62" y1="72" x2="118" y2="72" stroke="#d49008" stroke-width="1.5" opacity=".8"/>
+          <path d="M72,84 L90,74 L108,84 L90,94 Z" fill="none" stroke="#d49008" stroke-width="1.5" opacity=".8"/>
+          <line x1="62" y1="106" x2="118" y2="106" stroke="#d49008" stroke-width="1.3" opacity=".7"/>
+          <line x1="68" y1="120" x2="112" y2="120" stroke="#d49008" stroke-width="1.2" opacity=".62"/>
+          <rect x="106" y="116" width="24" height="24" rx="2" fill="#b82208" opacity=".92"/>
+          <text x="118" y="133" font-size="13" fill="#ffd030" text-anchor="middle" font-family="serif">令</text>
+        </svg>
+      </div>
+      <span class="chnum">02 · CHANNEL</span>
+      <h3 class="chtitle">法露恩光</h3>
+      <p class="chen">RITUAL ARTS · TALISMAN BLESSING</p>
+      <p class="chdesc">展示各類法術儀式、符咒書寫、祭改科儀、收驚解厄等法事紀錄，以法露甘霖普潤眾生，讓正法之光化解業障困頓。</p>
+      <span class="charrow">深入探索 →</span>
+    </a>
+    <a class="chcard fi" href="#" data-c="r" style="transition-delay:.28s">
+      <div class="chvis">
+        <svg viewBox="0 0 180 180" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="cg3" cx="50%" cy="50%"><stop offset="0%" stop-color="#8c1a04" stop-opacity=".42"/><stop offset="100%" stop-color="#8c1a04" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="90" cy="90" r="82" fill="url(#cg3)" stroke="#b82208" stroke-width="1.3" stroke-dasharray="7 4"/>
+          <ellipse cx="90" cy="55" rx="28" ry="11" fill="none" stroke="#b82208" stroke-width="2" opacity=".88"/>
+          <ellipse cx="90" cy="118" rx="28" ry="11" fill="none" stroke="#b82208" stroke-width="2" opacity=".88"/>
+          <rect x="62" y="55" width="56" height="63" fill="rgba(140,26,4,.25)" stroke="#b82208" stroke-width="2" opacity=".88"/>
+          <line x1="74" y1="55" x2="74" y2="118" stroke="#a86c04" stroke-width="1" opacity=".58"/>
+          <line x1="90" y1="55" x2="90" y2="118" stroke="#a86c04" stroke-width="1" opacity=".58"/>
+          <line x1="106" y1="55" x2="106" y2="118" stroke="#a86c04" stroke-width="1" opacity=".58"/>
+          <ellipse cx="90" cy="86" rx="8" ry="9" fill="#ffd030" opacity=".92">
+            <animate attributeName="opacity" values=".92;.44;.92" dur="2.4s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="90" cy="86" rx="16" ry="17" fill="none" stroke="#ffd030" stroke-width=".9" opacity=".3">
+            <animate attributeName="opacity" values=".3;.6;.3" dur="2.4s" repeatCount="indefinite"/>
+          </ellipse>
+          <line x1="90" y1="44" x2="90" y2="32" stroke="#a86c04" stroke-width="2"/>
+          <circle cx="90" cy="30" r="4" fill="#d49008" opacity=".75"/>
+          <line x1="90" y1="129" x2="90" y2="150" stroke="#a86c04" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <circle cx="90" cy="152" r="4" fill="#b82208" opacity=".65"/>
+        </svg>
+      </div>
+      <span class="chnum">03 · CHANNEL</span>
+      <h3 class="chtitle">幽冥通牒</h3>
+      <p class="chen">SPIRIT WORLD · YIN-YANG PASSAGE</p>
+      <p class="chdesc">探究道教生死觀、超度科儀、陰宅風水、祖先連結等幽冥境域之學，以悲憫之心為亡靈引路，助生者安心釋懷。</p>
+      <span class="charrow">深入探索 →</span>
+    </a>
+  </div>
+</section>
+
+<div id="ICONS">
+  <div class="ip">
+    <svg viewBox="0 0 580 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="ig1" cx="50%" cy="50%"><stop offset="0%" stop-color="#a86c04" stop-opacity=".22"/><stop offset="100%" stop-color="#010000" stop-opacity="0"/></radialGradient>
+        <filter id="gf1"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="580" height="440" fill="#040200"/>
+      <ellipse cx="290" cy="220" rx="272" ry="208" fill="url(#ig1)"/>
+      <circle cx="290" cy="220" r="178" fill="none" stroke="#a86c04" stroke-width="1.2" stroke-dasharray="12 7" opacity=".42"/>
+      <circle cx="290" cy="220" r="158" fill="none" stroke="#d49008" stroke-width=".5" stroke-dasharray="3 8" opacity=".3"/>
+      <g font-family="serif" font-size="20" fill="#a86c04" text-anchor="middle" dominant-baseline="central" opacity=".6">
+        <text x="290" y="28">☰</text><text x="416" y="94">☱</text><text x="468" y="220">☲</text><text x="416" y="346">☳</text>
+        <text x="290" y="412">☴</text><text x="164" y="346">☵</text><text x="112" y="220">☶</text><text x="164" y="94">☷</text>
+      </g>
+      <g filter="url(#gf1)">
+        <path d="M290,90 A130,130 0 0,1 290,350 A65,65 0 0,1 290,220 A65,65 0 0,0 290,90Z" fill="#a86c04" opacity=".9"/>
+        <path d="M290,90 A130,130 0 0,0 290,350 A65,65 0 0,0 290,220 A65,65 0 0,1 290,90Z" fill="#040200" opacity=".97"/>
+        <circle cx="290" cy="155" r="28" fill="#040200"/><circle cx="290" cy="155" r="12" fill="#d49008"/>
+        <circle cx="290" cy="285" r="28" fill="#a86c04" opacity=".9"/><circle cx="290" cy="285" r="12" fill="#040200"/>
+        <circle cx="290" cy="220" r="130" fill="none" stroke="#ffd030" stroke-width="2.5" opacity=".78"/>
+      </g>
+    </svg>
+    <div class="iplbl"><span class="ipch">陰陽太極</span><span class="ipen">YIN YANG · TAI CHI · 天地相合</span></div>
+  </div>
+  <div class="ip">
+    <svg viewBox="0 0 580 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="ig2" cx="50%" cy="50%"><stop offset="0%" stop-color="#a86c04" stop-opacity=".16"/><stop offset="100%" stop-color="#010000" stop-opacity="0"/></radialGradient>
+        <filter id="gf2"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="580" height="440" fill="#040200"/>
+      <ellipse cx="290" cy="220" rx="272" ry="208" fill="url(#ig2)"/>
+      <circle cx="290" cy="220" r="190" fill="none" stroke="#a86c04" stroke-width="1.2" opacity=".36" stroke-dasharray="9 6"/>
+      <polygon points="290,52 458,168 396,356 184,356 122,168" fill="none" stroke="#d49008" stroke-width="1.4" opacity=".5"/>
+      <g filter="url(#gf2)">
+        <circle cx="290" cy="52" r="42" fill="rgba(24,96,48,.32)" stroke="#228048" stroke-width="2.5"/><text x="290" y="65" font-family="Ma Shan Zheng,serif" font-size="34" fill="#2a9a58" text-anchor="middle">木</text>
+        <circle cx="458" cy="168" r="42" fill="rgba(140,26,4,.32)" stroke="#b82208" stroke-width="2.5"/><text x="458" y="181" font-family="Ma Shan Zheng,serif" font-size="34" fill="#d93010" text-anchor="middle">火</text>
+        <circle cx="396" cy="356" r="42" fill="rgba(168,108,4,.3)" stroke="#a86c04" stroke-width="2.5"/><text x="396" y="369" font-family="Ma Shan Zheng,serif" font-size="34" fill="#d49008" text-anchor="middle">土</text>
+        <circle cx="184" cy="356" r="42" fill="rgba(168,108,4,.18)" stroke="#ffd030" stroke-width="2.5"/><text x="184" y="369" font-family="Ma Shan Zheng,serif" font-size="34" fill="#ffd030" text-anchor="middle">金</text>
+        <circle cx="122" cy="168" r="42" fill="rgba(20,44,110,.32)" stroke="#4488cc" stroke-width="2.5"/><text x="122" y="181" font-family="Ma Shan Zheng,serif" font-size="34" fill="#66aadd" text-anchor="middle">水</text>
+        <circle cx="290" cy="220" r="52" fill="rgba(1,0,0,.96)" stroke="#d49008" stroke-width="2.5"/><text x="290" y="235" font-family="Ma Shan Zheng,serif" font-size="44" fill="#ffd030" text-anchor="middle">道</text>
+      </g>
+    </svg>
+    <div class="iplbl"><span class="ipch">五行相生</span><span class="ipen">FIVE ELEMENTS · WU XING · 化育萬物</span></div>
+  </div>
+  <div class="ip">
+    <svg viewBox="0 0 580 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="ig3" cx="50%" cy="50%"><stop offset="0%" stop-color="#8c1a04" stop-opacity=".24"/><stop offset="60%" stop-color="#a86c04" stop-opacity=".12"/><stop offset="100%" stop-color="#010000" stop-opacity="0"/></radialGradient>
+        <filter id="gf3"><feGaussianBlur stdDeviation="4.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="580" height="440" fill="#040200"/>
+      <ellipse cx="290" cy="220" rx="272" ry="208" fill="url(#ig3)"/>
+      <circle cx="290" cy="220" r="188" fill="none" stroke="#a86c04" stroke-width="1.4" opacity=".4" stroke-dasharray="14 7"/>
+      <circle cx="290" cy="220" r="162" fill="none" stroke="#d49008" stroke-width=".6" opacity=".3"/>
+      <circle cx="290" cy="220" r="132" fill="none" stroke="#a86c04" stroke-width="1" opacity=".22" stroke-dasharray="5 8"/>
+      <g stroke="#a86c04" stroke-width=".7" opacity=".32">
+        <line x1="290" y1="28" x2="290" y2="412"/><line x1="96" y1="220" x2="484" y2="220"/>
+        <line x1="153" y1="83" x2="427" y2="357"/><line x1="427" y1="83" x2="153" y2="357"/>
+      </g>
+      <g filter="url(#gf3)" opacity=".88">
+        <g transform="translate(290,40)">
+          <line x1="-20" y1="-9" x2="20" y2="-9" stroke="#ffd030" stroke-width="2.5"/>
+          <line x1="-20" y1="0" x2="20" y2="0" stroke="#ffd030" stroke-width="2.5"/>
+          <line x1="-20" y1="9" x2="20" y2="9" stroke="#ffd030" stroke-width="2.5"/>
+        </g>
+        <g transform="translate(290,400)">
+          <line x1="-20" y1="-9" x2="-3" y2="-9" stroke="#d49008" stroke-width="2.2"/><line x1="3" y1="-9" x2="20" y2="-9" stroke="#d49008" stroke-width="2.2"/>
+          <line x1="-20" y1="0" x2="-3" y2="0" stroke="#d49008" stroke-width="2.2"/><line x1="3" y1="0" x2="20" y2="0" stroke="#d49008" stroke-width="2.2"/>
+          <line x1="-20" y1="9" x2="-3" y2="9" stroke="#d49008" stroke-width="2.2"/><line x1="3" y1="9" x2="20" y2="9" stroke="#d49008" stroke-width="2.2"/>
+        </g>
+        <g transform="translate(96,220)">
+          <line x1="-9" y1="-20" x2="-9" y2="-3" stroke="#4488cc" stroke-width="2.2"/><line x1="-9" y1="3" x2="-9" y2="20" stroke="#4488cc" stroke-width="2.2"/>
+          <line x1="0" y1="-20" x2="0" y2="20" stroke="#4488cc" stroke-width="2.2"/>
+          <line x1="9" y1="-20" x2="9" y2="-3" stroke="#4488cc" stroke-width="2.2"/><line x1="9" y1="3" x2="9" y2="20" stroke="#4488cc" stroke-width="2.2"/>
+        </g>
+        <g transform="translate(484,220)">
+          <line x1="-9" y1="-20" x2="-9" y2="20" stroke="#b82208" stroke-width="2.2"/>
+          <line x1="0" y1="-20" x2="0" y2="-3" stroke="#b82208" stroke-width="2.2"/><line x1="0" y1="3" x2="0" y2="20" stroke="#b82208" stroke-width="2.2"/>
+          <line x1="9" y1="-20" x2="9" y2="20" stroke="#b82208" stroke-width="2.2"/>
+        </g>
+      </g>
+      <g filter="url(#gf3)">
+        <path d="M290,180 A40,40 0 0,1 290,260 A20,20 0 0,1 290,220 A20,20 0 0,0 290,180Z" fill="#a86c04" opacity=".9"/>
+        <path d="M290,180 A40,40 0 0,0 290,260 A20,20 0 0,0 290,220 A20,20 0 0,1 290,180Z" fill="#040200" opacity=".97"/>
+        <circle cx="290" cy="200" r="9" fill="#040200"/><circle cx="290" cy="200" r="4" fill="#d49008"/>
+        <circle cx="290" cy="240" r="9" fill="#a86c04" opacity=".9"/><circle cx="290" cy="240" r="4" fill="#040200"/>
+        <circle cx="290" cy="220" r="40" fill="none" stroke="#ffd030" stroke-width="1.8" opacity=".72"/>
+      </g>
+    </svg>
+    <div class="iplbl"><span class="ipch">八卦羅盤</span><span class="ipen">BAGUA · EIGHT TRIGRAMS · 乾坤定位</span></div>
+  </div>
+</div>
+
+<section id="TOTEM">
+  <div class="totemwrap">
+    <div class="totemleft">
+      <svg viewBox="0 0 500 500" width="460" height="460" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="tg0"><stop offset="0%" stop-color="#a86c04" stop-opacity=".18"/><stop offset="100%" stop-color="#010000" stop-opacity="0"/></radialGradient>
+          <filter id="tglo"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle cx="250" cy="250" r="228" fill="url(#tg0)" stroke="#a86c04" stroke-width="1.8" stroke-dasharray="12 6" opacity=".44"/>
+        <circle cx="250" cy="250" r="206" fill="none" stroke="#a86c04" stroke-width=".6" opacity=".22"/>
+        <polygon points="250,54 432,174 366,394 134,394 68,174" fill="none" stroke="#d49008" stroke-width="1.6" opacity=".52"/>
+        <g filter="url(#tglo)">
+          <circle cx="250" cy="54"  r="44" fill="rgba(24,96,48,.32)" stroke="#228048" stroke-width="2.5"/><text x="250" y="68" font-family="Ma Shan Zheng,serif" font-size="36" fill="#2a9a58" text-anchor="middle">木</text>
+          <circle cx="432" cy="174" r="44" fill="rgba(140,26,4,.32)" stroke="#b82208" stroke-width="2.5"/><text x="432" y="188" font-family="Ma Shan Zheng,serif" font-size="36" fill="#d93010" text-anchor="middle">火</text>
+          <circle cx="366" cy="394" r="44" fill="rgba(168,108,4,.3)" stroke="#a86c04" stroke-width="2.5"/><text x="366" y="408" font-family="Ma Shan Zheng,serif" font-size="36" fill="#d49008" text-anchor="middle">土</text>
+          <circle cx="134" cy="394" r="44" fill="rgba(168,108,4,.18)" stroke="#ffd030" stroke-width="2.5"/><text x="134" y="408" font-family="Ma Shan Zheng,serif" font-size="36" fill="#ffd030" text-anchor="middle">金</text>
+          <circle cx="68"  cy="174" r="44" fill="rgba(20,44,110,.32)" stroke="#4488cc" stroke-width="2.5"/><text x="68" y="188" font-family="Ma Shan Zheng,serif" font-size="36" fill="#66aadd" text-anchor="middle">水</text>
+          <circle cx="250" cy="250" r="56" fill="rgba(1,0,0,.96)" stroke="#d49008" stroke-width="2.5"/><text x="250" y="266" font-family="Ma Shan Zheng,serif" font-size="46" fill="#ffd030" text-anchor="middle">道</text>
+        </g>
+        <g fill="#a86c04" opacity=".38">
+          <circle cx="158" cy="130" r="2.5"/><circle cx="342" cy="130" r="2.5"/>
+          <circle cx="424" cy="302" r="2.5"/><circle cx="76" cy="302" r="2.5"/>
+          <circle cx="250" cy="444" r="2.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="totemright">
+      <span class="eyebrow">FIVE ELEMENTS · 五行調和</span>
+      <h2 class="totemh">天人合一<br><span>萬物歸道</span></h2>
+      <div class="divdr"><span class="dl"></span><span class="ds">五行相生・調和陰陽</span><span class="dr"></span></div>
+      <p class="totembody fi">道家宇宙觀以<strong style="color:var(--g5)">木火土金水</strong>五行為天地運行之本，五行相生相剋，化育萬物。人體亦是小宇宙，五臟六腑各應五行，調和五行即是養生之道，亦是祛病化煞、趨吉避凶之要訣。</p>
+      <div class="pills fi">
+        <div class="pill"><span class="pilli">☽</span><span class="pillt">陰柔之道</span><p class="pilld">順應自然、以柔克剛、靜定生慧，乃修行之根本法門。</p></div>
+        <div class="pill pillb"><span class="pilli">☀</span><span class="pillt">陽剛之道</span><p class="pilld">積極作為、光明正大、精進不懈，乃濟世之精神所在。</p></div>
+        <div class="pill"><span class="pilli">🌿</span><span class="pillt">木德仁慈</span><p class="pilld">木主仁義，生長之氣，護持慈悲心念，積累修行資糧。</p></div>
+        <div class="pill pillb"><span class="pilli">🔥</span><span class="pillt">火德光明</span><p class="pilld">法術以火為媒，燃香奉神，法力藉火而上達天聽。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="DAILY">
+  <div class="dglow"></div>
+  <span class="eyebrow">DAILY WISDOM · 每日法語</span>
+  <div class="dframe">
+    <div class="dtr"></div><div class="dbl"></div>
+    <div class="dgem"></div>
+    <p class="dq" id="DQ">致虛極，守靜篤，萬物並作，吾以觀復。</p>
+    <div class="dgem"></div>
+    <p class="dsrc" id="DS">—— 《道德經》第十六章</p>
+  </div>
+</section>
+
+<section id="ART">
+  <div class="arthdr">
+    <div>
+      <span class="eyebrow">CULTIVATION WRITINGS · 修行文苑</span>
+      <h2 class="h2">玄門密義<br>正法文獻</h2>
+      <div class="divdr"><span class="dl"></span><span class="ds">墨香道義・正法傳承</span><span class="dr"></span></div>
+    </div>
+    <a class="btngold" href="articles.html">閱覽全部文章</a>
+  </div>
+  <div class="artgrid">
+    <a class="afeat fi" href="articles.html">
+      <div class="athumb" style="height:300px">
+        <svg viewBox="0 0 440 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ag1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#080500"/><stop offset="55%" stop-color="#160d02"/><stop offset="100%" stop-color="#080500"/></linearGradient></defs>
+          <rect width="440" height="300" fill="url(#ag1)"/>
+          <g transform="translate(220,150)" opacity=".72">
+            <ellipse rx="180" ry="104" fill="none" stroke="#a86c04" stroke-width=".9" stroke-dasharray="6 5"/>
+            <ellipse rx="132" ry="74" fill="none" stroke="#d49008" stroke-width=".9" stroke-dasharray="4 5"/>
+            <ellipse rx="85" ry="46" fill="none" stroke="#ffd030" stroke-width="1.4" opacity=".68"/>
+            <path d="M-145,0 Q-72,-52 0,-24 Q72,0 145,-40" fill="none" stroke="#a86c04" stroke-width="2" opacity=".68"/>
+            <circle r="22" fill="#a86c04" opacity=".45"/><circle r="11" fill="#ffd030" opacity=".9"/><circle r="4.5" fill="#fff" opacity=".95"/>
+          </g>
+          <text x="28" y="60" font-family="Ma Shan Zheng,serif" font-size="64" fill="rgba(168,108,4,.17)">氣</text>
+          <text x="328" y="285" font-family="Ma Shan Zheng,serif" font-size="48" fill="rgba(168,108,4,.13)">道</text>
+        </svg>
+      </div>
+      <div class="acnt">
+        <span class="acat">清靜經緯 · CULTIVATION</span>
+        <h3 class="attl">養氣之道：從呼吸到天人感應</h3>
+        <p class="aex">「氣」是道家宇宙觀的核心。天地之氣、人身之氣、神靈之氣，三者互通感應，修行者藉由吐納調息，使體內元氣與天地宇宙之氣相融合一，達至天人感應的境界…</p>
+        <span class="ameta">清靜經緯・修行基礎</span>
+      </div>
+    </a>
+    <a class="acard fi" href="articles.html" style="transition-delay:.1s">
+      <div class="aath" style="height:210px">
+        <svg viewBox="0 0 340 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="210" fill="#080500"/>
+          <g transform="translate(170,105)">
+            <circle r="94" fill="none" stroke="#b82208" stroke-width="1.4" stroke-dasharray="7 6" opacity=".58"/>
+            <path d="M0,-70 L21,-29 L63,-29 L30,0 L41,42 L0,18 L-41,42 L-30,0 L-63,-29 L-21,-29 Z" fill="none" stroke="#d93010" stroke-width="1.8" opacity=".72"/>
+            <circle r="25" fill="rgba(140,26,4,.4)" stroke="#ffd030" stroke-width="2.2"/>
+            <text y="9" font-family="Ma Shan Zheng,serif" font-size="26" fill="#ffd030" text-anchor="middle">改</text>
+          </g>
+          <text x="16" y="38" font-family="Ma Shan Zheng,serif" font-size="58" fill="rgba(184,34,8,.16)">祭</text>
+        </svg>
+      </div>
+      <div class="abody">
+        <span class="acat">法露恩光 · RITUAL</span>
+        <h3 class="attl">祭改科儀：解厄轉運的玄學原理</h3>
+        <p class="aex">透過特定科儀調整個人與天地五行的磁場關係，化解命格中的不利因素…</p>
+        <span class="ameta">法露恩光・儀式科學</span>
+      </div>
+    </a>
+    <a class="acard fi" href="articles.html" style="transition-delay:.2s">
+      <div class="aath" style="height:210px">
+        <svg viewBox="0 0 340 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="210" fill="#080500"/>
+          <g transform="translate(170,105)" opacity=".9">
+            <ellipse rx="54" ry="74" fill="rgba(168,108,4,.12)" stroke="#a86c04" stroke-width="2"/>
+            <rect x="-34" y="-104" width="19" height="46" rx="9" fill="none" stroke="#a86c04" stroke-width="1.7"/>
+            <rect x="-13" y="-114" width="19" height="55" rx="9" fill="none" stroke="#d49008" stroke-width="1.7"/>
+            <rect x="7" y="-111" width="19" height="52" rx="9" fill="none" stroke="#d49008" stroke-width="1.7"/>
+            <rect x="27" y="-97" width="18" height="44" rx="8" fill="none" stroke="#a86c04" stroke-width="1.7"/>
+            <circle r="26" fill="rgba(255,208,48,.16)" stroke="#ffd030" stroke-width="1.5"/>
+            <text y="10" font-family="serif" font-size="28" fill="#ffd030" text-anchor="middle" opacity=".94">☸</text>
+          </g>
+          <text x="6" y="200" font-family="Ma Shan Zheng,serif" font-size="72" fill="rgba(168,108,4,.13)">魂</text>
+        </svg>
+      </div>
+      <div class="abody">
+        <span class="acat">法露恩光 · HEALING</span>
+        <h3 class="attl">收驚安魂：魂魄失調的對治之道</h3>
+        <p class="aex">三魂七魄受到驚嚇、衝煞後，魂魄可能失位離散，導致身心失衡…</p>
+        <span class="ameta">法露恩光・心靈療癒</span>
+      </div>
+    </a>
+    <a class="acard fi" href="articles.html" style="transition-delay:.14s">
+      <div class="aath" style="height:210px">
+        <svg viewBox="0 0 340 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="210" fill="#080500"/>
+          <g transform="translate(170,105)">
+            <rect x="-70" y="-90" width="140" height="180" rx="4" fill="rgba(24,96,48,.18)" stroke="#228048" stroke-width="2.2" opacity=".82"/>
+            <path d="M-30,-70 Q0,-88 30,-70" fill="none" stroke="#ffd030" stroke-width="3" opacity=".95"/>
+            <circle cx="0" cy="-80" r="8" fill="none" stroke="#ffd030" stroke-width="2" opacity=".72"/>
+            <line x1="-50" y1="-50" x2="50" y2="-50" stroke="#d49008" stroke-width="1.7" opacity=".82"/>
+            <path d="M-36,-34 L0,-52 L36,-34 L0,-14 Z" fill="none" stroke="#d49008" stroke-width="1.7" opacity=".82"/>
+            <line x1="-50" y1="6" x2="50" y2="6" stroke="#d49008" stroke-width="1.5" opacity=".72"/>
+            <line x1="-44" y1="26" x2="44" y2="26" stroke="#d49008" stroke-width="1.4" opacity=".65"/>
+            <rect x="38" y="54" width="32" height="32" rx="3" fill="#8c1a04" opacity=".92"/>
+            <text x="54" y="75" font-size="19" fill="#ffd030" text-anchor="middle" font-family="serif">令</text>
+          </g>
+        </svg>
+      </div>
+      <div class="abody">
+        <span class="acat">玄門密義 · TALISMAN</span>
+        <h3 class="attl">符咒原理：天人溝通的神聖語言</h3>
+        <p class="aex">符咒是道家建立在「天人感應」基礎上的溝通體系，以特定圖形文字承載意念…</p>
+        <span class="ameta">玄門密義・符咒理論</span>
+      </div>
+    </a>
+    <a class="acard fi" href="articles.html" style="transition-delay:.24s">
+      <div class="aath" style="height:210px">
+        <svg viewBox="0 0 340 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="210" fill="#080500"/>
+          <g transform="translate(170,105)">
+            <circle r="88" fill="none" stroke="#a86c04" stroke-width="1.4" opacity=".46" stroke-dasharray="10 6"/>
+            <circle cx="0" cy="-46" r="20" fill="none" stroke="#d49008" stroke-width="2" opacity=".88"/>
+            <line x1="0" y1="-26" x2="0" y2="28" stroke="#d49008" stroke-width="2" opacity=".88"/>
+            <line x1="0" y1="-8" x2="-30" y2="16" stroke="#d49008" stroke-width="2" opacity=".88"/>
+            <line x1="0" y1="-8" x2="30" y2="16" stroke="#d49008" stroke-width="2" opacity=".88"/>
+            <line x1="0" y1="28" x2="-20" y2="66" stroke="#d49008" stroke-width="2" opacity=".88"/>
+            <line x1="0" y1="28" x2="20" y2="66" stroke="#d49008" stroke-width="2" opacity=".88"/>
+            <line x1="0" y1="-88" x2="0" y2="-68" stroke="#ffd030" stroke-width="2.8" opacity=".92"/>
+            <line x1="62" y1="-62" x2="47" y2="-47" stroke="#ffd030" stroke-width="2" opacity=".7"/>
+            <line x1="-62" y1="-62" x2="-47" y2="-47" stroke="#ffd030" stroke-width="2" opacity=".7"/>
+          </g>
+          <text x="10" y="48" font-family="Ma Shan Zheng,serif" font-size="44" fill="rgba(168,108,4,.14)">天</text>
+        </svg>
+      </div>
+      <div class="abody">
+        <span class="acat">清靜經緯 · PHILOSOPHY</span>
+        <h3 class="attl">天人合一：道家宇宙觀的核心精義</h3>
+        <p class="aex">宇宙萬物皆是「道」的展現，人類並非宇宙主宰，而是其中一個共鳴的節點…</p>
+        <span class="ameta">清靜經緯・哲學思想</span>
+      </div>
+    </a>
+    <a class="acard fi" href="articles.html" style="transition-delay:.34s">
+      <div class="aath" style="height:210px">
+        <svg viewBox="0 0 340 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="210" fill="#080500"/>
+          <g transform="translate(170,105)">
+            <circle r="84" fill="none" stroke="#a86c04" stroke-width="2.2" opacity=".68"/>
+            <path d="M0,-84 A84,84 0 0,1 0,84 A42,42 0 0,1 0,0 A42,42 0 0,0 0,-84Z" fill="rgba(4,2,0,.85)"/>
+            <path d="M0,-84 A84,84 0 0,0 0,84 A42,42 0 0,0 0,0 A42,42 0 0,1 0,-84Z" fill="rgba(168,108,4,.35)"/>
+            <circle cx="0" cy="-42" r="16" fill="#040200" stroke="#a86c04" stroke-width="1.5"/>
+            <circle cx="0" cy="-42" r="7" fill="#d49008"/>
+            <circle cx="0" cy="42" r="16" fill="#a86c04" opacity=".9"/>
+            <circle cx="0" cy="42" r="7" fill="#040200"/>
+            <circle r="84" fill="none" stroke="#ffd030" stroke-width="1" opacity=".52"/>
+          </g>
+          <text x="8" y="48" font-family="Ma Shan Zheng,serif" font-size="42" fill="rgba(168,108,4,.14)">陰</text>
+          <text x="272" y="196" font-family="Ma Shan Zheng,serif" font-size="42" fill="rgba(168,108,4,.14)">陽</text>
+        </svg>
+      </div>
+      <div class="abody">
+        <span class="acat">玄門密義 · PHILOSOPHY</span>
+        <h3 class="attl">陰陽調和：生命能量的平衡藝術</h3>
+        <p class="aex">陰陽並非對立，而是互根互用的共生關係。偏陰則寒滯，偏陽則躁亢，唯平衡方能安泰…</p>
+        <span class="ameta">玄門密義・陰陽哲學</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="SYM">
+  <div class="symwm">符</div>
+  <span class="eyebrow">TALISMAN COMPENDIUM · 符咒百科</span>
+  <h2 class="h2">神聖符籙<br>法力四大類</h2>
+  <div class="divdr"><span class="dl"></span><span class="ds">法・墨・神・印・天地共鑒</span><span class="dr"></span></div>
+  <div class="symcats fi">
+    <div class="scat">
+      <div class="scatico">
+        <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="48" cy="48" r="44" fill="rgba(24,96,48,.22)" stroke="#228048" stroke-width="2.2"/>
+          <circle cx="48" cy="48" r="32" fill="none" stroke="#228048" stroke-width=".9" stroke-dasharray="4 3" opacity=".5"/>
+          <text x="48" y="62" font-family="Ma Shan Zheng,serif" font-size="44" fill="#2a9a58" text-anchor="middle">護</text>
+        </svg>
+      </div>
+      <h3 class="scatname">護身辟邪符</h3><p class="scaten">PROTECTION · WARD OFF EVIL</p>
+      <p class="scatdesc">驅邪避煞、護身平安、守宅鎮煞，以玄法抵禦外邪入侵，保全三魂七魄安穩歸位，令邪氣不得近身。</p>
+    </div>
+    <div class="scat">
+      <div class="scatico">
+        <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="48" cy="48" r="44" fill="rgba(168,108,4,.22)" stroke="#a86c04" stroke-width="2.2"/>
+          <circle cx="48" cy="48" r="32" fill="none" stroke="#d49008" stroke-width=".9" stroke-dasharray="4 3" opacity=".5"/>
+          <text x="48" y="62" font-family="Ma Shan Zheng,serif" font-size="44" fill="#ffd030" text-anchor="middle">財</text>
+        </svg>
+      </div>
+      <h3 class="scatname">招財納福符</h3><p class="scaten">WEALTH · ATTRACT FORTUNE</p>
+      <p class="scatdesc">開財路、旺事業、招貴人，疏通財氣脈絡，引動天地之財氣向個人生命場域匯聚，廣納天賜福緣。</p>
+    </div>
+    <div class="scat">
+      <div class="scatico">
+        <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="48" cy="48" r="44" fill="rgba(140,26,4,.22)" stroke="#b82208" stroke-width="2.2"/>
+          <circle cx="48" cy="48" r="32" fill="none" stroke="#d93010" stroke-width=".9" stroke-dasharray="4 3" opacity=".5"/>
+          <text x="48" y="62" font-family="Ma Shan Zheng,serif" font-size="44" fill="#d93010" text-anchor="middle">緣</text>
+        </svg>
+      </div>
+      <h3 class="scatname">合和姻緣符</h3><p class="scaten">LOVE · HARMONIZE BONDS</p>
+      <p class="scatdesc">斬除桃花煞、化解感情阻礙、促進姻緣相合，以法力梳理人際關係中的陰陽失衡，引動情緣歸正。</p>
+    </div>
+    <div class="scat">
+      <div class="scatico">
+        <svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="48" cy="48" r="44" fill="rgba(20,44,110,.22)" stroke="#4466aa" stroke-width="2.2"/>
+          <circle cx="48" cy="48" r="32" fill="none" stroke="#4488cc" stroke-width=".9" stroke-dasharray="4 3" opacity=".5"/>
+          <text x="48" y="62" font-family="Ma Shan Zheng,serif" font-size="44" fill="#66aadd" text-anchor="middle">醫</text>
+        </svg>
+      </div>
+      <h3 class="scatname">健康療癒符</h3><p class="scaten">HEALING · RESTORE VITALITY</p>
+      <p class="scatdesc">調理五行體質失衡、補氣扶正、安神定魄，配合傳統醫理輔助身心靈整體康復，重建生命能量場。</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:68px;"><a class="btngold" href="symbols.html">探索完整符咒百科</a></div>
+</section>
+
+<section id="TENETS">
+  <div class="tnwm">道</div>
+  <span class="eyebrow">THREE PRINCIPLES · 修行綱領</span>
+  <h2 class="h2">道法三綱</h2>
+  <div class="divdr" style="max-width:500px;margin:24px auto 0;"><span class="dl"></span><span class="ds">修行之正法準則</span><span class="dr"></span></div>
+  <div class="tngrid fi">
+    <div class="tenet"><span class="tnn">一</span>
+      <div class="tnico"><svg width="76" height="76" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="38" r="34" fill="none" stroke="#a86c04" stroke-width="2" opacity=".68"/><circle cx="38" cy="38" r="25" fill="none" stroke="#a86c04" stroke-width=".8" stroke-dasharray="3 4" opacity=".42"/><text x="38" y="51" font-family="Ma Shan Zheng,serif" font-size="34" fill="#d49008" text-anchor="middle">法</text></svg></div>
+      <h3 class="tntitle">依法不依人</h3>
+      <p class="tnbody">修行以天道正法為準則，不以個人喜好或師長威權為依歸。法理客觀，任何人皆需在法理框架下行事，法大於情，道大於人。</p>
+    </div>
+    <div class="tenet"><span class="tnn">二</span>
+      <div class="tnico"><svg width="76" height="76" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="38" r="34" fill="none" stroke="#a86c04" stroke-width="2" opacity=".68"/><circle cx="38" cy="38" r="25" fill="none" stroke="#a86c04" stroke-width=".8" stroke-dasharray="3 4" opacity=".42"/><text x="38" y="51" font-family="Ma Shan Zheng,serif" font-size="34" fill="#d49008" text-anchor="middle">誠</text></svg></div>
+      <h3 class="tntitle">以誠感天地</h3>
+      <p class="tnbody">心誠則靈，一切法術科儀的根本在於心念純正、誠敬天地神明。虛偽之心難以感動神靈，唯有真誠方能法力顯現，感應天機。</p>
+    </div>
+    <div class="tenet"><span class="tnn">三</span>
+      <div class="tnico"><svg width="76" height="76" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="38" r="34" fill="none" stroke="#a86c04" stroke-width="2" opacity=".68"/><circle cx="38" cy="38" r="25" fill="none" stroke="#a86c04" stroke-width=".8" stroke-dasharray="3 4" opacity=".42"/><text x="38" y="51" font-family="Ma Shan Zheng,serif" font-size="34" fill="#d49008" text-anchor="middle">德</text></svg></div>
+      <h3 class="tntitle">積德累功行</h3>
+      <p class="tnbody">修行不只是學法術，更要在日常生活中積累功德。善行義舉是最強大的護身符，德行深厚者天道自然庇護，福壽綿延不絕。</p>
+    </div>
+  </div>
+</section>
+
+<section id="CON">
+  <div class="conwrap">
+    <div>
+      <span class="eyebrow">CONSULTATION · 靈性諮詢</span>
+      <h2 class="h2">預約<br>一對一諮詢</h2>
+      <div class="divdr"><span class="dl"></span><span class="ds">天機啟示・道緣相引</span><span class="dr"></span></div>
+      <p class="conbody">隨緣堂提供線上及實體靈性諮詢服務，協助您解讀命盤、分析五行格局、針對人生困境提出玄學層面的觀察與建議。</p>
+      <ul class="conlist">
+        <li><span>☰</span>八字命理分析與五行格局解讀</li>
+        <li><span>☱</span>祭改科儀客製化規劃</li>
+        <li><span>☲</span>收驚安魂・心靈創傷療癒</li>
+        <li><span>☳</span>符咒開光訂製服務</li>
+        <li><span>☴</span>陰宅陽宅風水勘察</li>
+        <li><span>☵</span>遠程法術助緣（視訊進行）</li>
+      </ul>
+    </div>
+    <div>
+      <form id="CF" onsubmit="return SF(event)">
+        <div class="fg"><label class="flbl">姓名</label><input class="fin" type="text" placeholder="請輸入您的姓名" required/></div>
+        <div class="fg"><label class="flbl">聯絡方式（電話或電郵）</label><input class="fin" type="text" placeholder="方便聯絡的號碼或信箱" required/></div>
+        <div class="fg"><label class="flbl">諮詢類別</label>
+          <select class="fsel"><option value="">請選擇諮詢項目</option><option>八字命理・五行格局</option><option>祭改解厄科儀</option><option>收驚安魂療癒</option><option>符咒訂製開光</option><option>風水堪輿</option><option>遠程法術助緣</option><option>其他問題</option></select>
+        </div>
+        <div class="fg"><label class="flbl">簡述困境或問題</label><textarea class="ftxt" placeholder="請簡要說明您目前面臨的情況或困擾，越詳細越好…"></textarea></div>
+        <button class="fsub" type="submit">提交諮詢申請 ☯</button>
+      </form>
+      <div id="FOK"><p style="font-size:3.2rem;margin-bottom:20px">☯</p><p>申請已收到，道緣俱足，<br>師傅將盡快與您聯絡。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="FT">
+  <div class="ftinner">
+    <div><div class="ftbrand">隨緣堂</div><p class="fttag">道家玄學正統道場<br>傳承廿年・四海濟眾<br>順天應道・隨緣而化</p></div>
+    <div><p class="ftct">三大頻道</p><ul class="ftul"><li><a href="articles.html">清靜經緯</a></li><li><a href="symbols.html">法露恩光</a></li><li><a href="#">幽冥通牒</a></li></ul></div>
+    <div><p class="ftct">服務項目</p><ul class="ftul"><li><a href="#CON">靈性諮詢</a></li><li><a href="symbols.html">符咒訂製</a></li><li><a href="#CON">祭改科儀</a></li><li><a href="#CON">遠程助緣</a></li></ul></div>
+    <div><p class="ftct">修行資源</p><ul class="ftul"><li><a href="articles.html">修行文苑</a></li><li><a href="symbols.html">符咒百科</a></li><li><a href="#DAILY">每日法語</a></li><li><a href="#TENETS">道法三綱</a></li></ul></div>
+  </div>
+  <div class="ftbtm"><span>© 2025 隨緣堂 · 道家玄學正統道場 · 版權所有</span><span>道法自然・無為而治</span></div>
+</footer>
+
+<script>
+const CUR=document.getElementById('CUR'),CDOT=document.getElementById('CDOT');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;CDOT.style.left=mx+'px';CDOT.style.top=my+'px';});
+(function loop(){cx+=(mx-cx)*.1;cy+=(my-cy)*.1;CUR.style.left=cx+'px';CUR.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.scat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{CUR.style.width='36px';CUR.style.height='36px';CUR.style.borderColor='var(--r3)';});
+  el.addEventListener('mouseleave',()=>{CUR.style.width='16px';CUR.style.height='16px';CUR.style.borderColor='var(--g4)';});
+});
+const QS=[
+  {t:'致虛極，守靜篤，萬物並作，吾以觀復。',s:'《道德經》第十六章'},
+  {t:'上善若水，水善利萬物而不爭。',s:'《道德經》第八章'},
+  {t:'為學日益，為道日損，損之又損，以至於無為。',s:'《道德經》第四十八章'},
+  {t:'知人者智，自知者明；勝人者有力，自勝者強。',s:'《道德經》第三十三章'},
+  {t:'天下莫柔弱於水，而攻堅強者莫之能勝。',s:'《道德經》第七十八章'},
+  {t:'信言不美，美言不信；善者不辯，辯者不善。',s:'《道德經》第八十一章'},
+  {t:'道生一，一生二，二生三，三生萬物。',s:'《道德經》第四十二章'},
+  {t:'天之道，利而不害；聖人之道，為而不爭。',s:'《道德經》第八十一章'},
+];
+const q=QS[Math.floor(Math.random()*QS.length)];
+document.getElementById('DQ').textContent=q.t;
+document.getElementById('DS').textContent='—— '+q.s;
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+function SF(e){e.preventDefault();document.getElementById('CF').style.display='none';document.getElementById('FOK').style.display='block';return false;}
+window.addEventListener('scroll',()=>{document.getElementById('NAV').style.boxShadow=window.scrollY>50?'0 4px 56px rgba(0,0,0,.98)':'none';});
+</script>
+</body>
+</html>
